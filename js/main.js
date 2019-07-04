@@ -110,7 +110,7 @@ function frame() {
 
 function start() {
     let fps = $('#fpsIn').val();
-    if (fps == null) {
+    if (fps === "") {
         fps = 5;
     }
     if (myFp != null) {

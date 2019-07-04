@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="./js/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="./style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <title>Conway's Game of Life</title>
+</head>
+
+<body>
+    <header>
+        <label>Height: </label><input type="number" id="height" min="1">
+        <label>Width: </label><input type="number" id="width" min="1">
+        <input type="button" value="build cells" onclick="buildCells()">
+    </header>
+    <main>
+        <article>
+            <div>
+                <table></table>
+            </div>
+            <div class="control">
+                <input type="button" id="startBtn" value="start" onclick="start()">
+                <input type="button" value="stop" onclick="stop()">
+            </div>
+        </article>
+        <aside class="control">
+            <div><label>fps: </label><input type="number" id="fpsIn"></div>
+            <div><label>live: </label><span id="liveCount"></span></div>
+            <div><label>dead: </label><span id="deadCount"></span></div>
+        </aside>
+    </main>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

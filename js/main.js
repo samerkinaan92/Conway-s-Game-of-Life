@@ -188,10 +188,13 @@ function randomCells() {
     deadCount = width * height;
     liveCount = 0;
     stop();
+    let rand = $('#randNum').val();
+    if(rand < 0)
+        rand = 0;
     for (let i = 0; i < height; i++) {
         for (let j = 0; j < width; j++) {
             rand = Math.floor(Math.random() * 100);
-            if(rand >= $('#randNum').val()){
+            if(rand >= rand){
                 $(`#td${i}-${j}`).removeClass('live');
                 $(`#td${i}-${j}`).addClass('dead');
             }else{

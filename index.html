@@ -11,8 +11,8 @@
 
 <body>
     <header>
-        <label>Height: </label><input type="number" id="height" min="1">
-        <label>Width: </label><input type="number" id="width" min="1">
+        <label>Height: </label><input type="number" id="height" min="1" max="80" value="20">
+        <label>Width: </label><input type="number" id="width" min="1" max="80" value="20">
         <input type="button" value="build cells" onclick="buildCells()">
     </header>
     <main>
@@ -22,11 +22,13 @@
             </div>
             <div class="control">
                 <input type="button" id="startBtn" value="start" onclick="start()">
-                <input type="button" value="stop" onclick="stop()">
+                <input type="button" id="stopBtn" value="stop" onclick="stop()">
+                <input type="button" value="random" onclick="randomCells()">
             </div>
         </article>
-        <aside class="control">
-            <div><label>fps: </label><input type="number" id="fpsIn"></div>
+        <aside class="control info">
+            <div><label>fps: </label><input type="number" id="fpsIn" value="5"></div>
+            <div><label>Random: </label><input type="number" id="randNum" value="25"></div>
             <div><label>live: </label><span id="liveCount"></span></div>
             <div><label>dead: </label><span id="deadCount"></span></div>
         </aside>

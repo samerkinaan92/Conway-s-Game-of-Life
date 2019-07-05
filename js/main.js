@@ -1,7 +1,11 @@
 let height, width;
 let myFp, liveCount,
     deadCount;
+let stopped = true;
 
+
+
+// initalize the cells width and height
 function buildCells() {
     // get values from inputs
     height = $('#height').val();
@@ -32,21 +36,27 @@ function buildCells() {
     }
 }
 
+
+//cell click handler
 function tdClicked(id) {
-    if ($('#' + id).hasClass('dead')) {
-        $('#' + id).removeClass('dead');
-        $('#' + id).addClass('live');
-        deadCount--;
-        liveCount++;
-    } else {
-        $('#' + id).removeClass('live');
-        $('#' + id).addClass('dead');
-        deadCount++;
-        liveCount--;
+    if (stopped) {
+        if ($('#' + id).hasClass('dead')) {
+            $('#' + id).removeClass('dead');
+            $('#' + id).addClass('live');
+            deadCount--;
+            liveCount++;
+        } else {
+            $('#' + id).removeClass('live');
+            $('#' + id).addClass('dead');
+            deadCount++;
+            liveCount--;
+        }
+        updateCount();
     }
-    updateCount();
 }
 
+
+//frame calculation
 function frame() {
     let count;
     let td;
@@ -108,6 +118,7 @@ function frame() {
     updateCount();
 }
 
+//start click handler
 function start() {
     let fps = $('#fpsIn').val();
     if (fps === "") {
@@ -117,13 +128,19 @@ function start() {
         clearInterval(myFp);
     }
     myFp = setInterval(frame, 1000 / fps);
+    stopped = false;
 }
 
+//stop click handler
 function stop() {
     clearInterval(myFp);
     console.log('stoped');
+    stopped = true;
+    $('#stopBtn').focus();
 }
 
+
+//changes the cells after the frame calculation have finished
 function changeCells() {
     let isChange = false;
     for (let i = 0; i < height; i++) {
@@ -147,6 +164,8 @@ function changeCells() {
     return isChange;
 }
 
+
+//checks if the (i,j) cell is alive
 function isCellLive(i, j) {
     let td = document.getElementById(`td${i}-${j}`);
     if (td != null) {
@@ -157,7 +176,32 @@ function isCellLive(i, j) {
     return false;
 }
 
+
+//updates the cells count text on screen
 function updateCount() {
     $('#liveCount').text(liveCount);
     $('#deadCount').text(deadCount);
+}
+
+function randomCells() {
+    let rand;
+    deadCount = width * height;
+    liveCount = 0;
+    stop();
+    for (let i = 0; i < height; i++) {
+        for (let j = 0; j < width; j++) {
+            rand = Math.floor(Math.random() * 100);
+            if(rand >= $('#randNum').val()){
+                $(`#td${i}-${j}`).removeClass('live');
+                $(`#td${i}-${j}`).addClass('dead');
+            }else{
+                $(`#td${i}-${j}`).removeClass('dead');
+                $(`#td${i}-${j}`).addClass('live');
+                liveCount++;
+                deadCount--;
+            }
+        }
+    }
+
+    updateCount();
 }

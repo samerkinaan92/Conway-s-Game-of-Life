@@ -184,20 +184,20 @@ function updateCount() {
 }
 
 function randomCells() {
-    let rand;
     deadCount = width * height;
     liveCount = 0;
     stop();
-    let rand = $('#randNum').val();
-    if(rand < 0)
-        rand = 0;
+    let randPer = $('#randNum').val();
+    if (randPer < 0) {
+        randPer = 0;
+    }
     for (let i = 0; i < height; i++) {
         for (let j = 0; j < width; j++) {
             rand = Math.floor(Math.random() * 100);
-            if(rand >= rand){
+            if (rand >= randPer) {
                 $(`#td${i}-${j}`).removeClass('live');
                 $(`#td${i}-${j}`).addClass('dead');
-            }else{
+            } else {
                 $(`#td${i}-${j}`).removeClass('dead');
                 $(`#td${i}-${j}`).addClass('live');
                 liveCount++;

@@ -1,6 +1,6 @@
 let height, width;
 let myFp, liveCount,
-    deadCount;
+    deadCount, genCount;
 let stopped = true;
 
 
@@ -27,6 +27,7 @@ function buildCells() {
         //init dead and live count
         deadCount = height * width;
         liveCount = 0;
+        genCount = 0;
         updateCount();
 
 
@@ -114,7 +115,7 @@ function frame() {
     if (!isChange) {
         stop();
     }
-
+    genCount++;
     updateCount();
 }
 
@@ -181,11 +182,13 @@ function isCellLive(i, j) {
 function updateCount() {
     $('#liveCount').text(liveCount);
     $('#deadCount').text(deadCount);
+    $('#genCount').text(genCount);
 }
 
 function randomCells() {
     deadCount = width * height;
     liveCount = 0;
+    genCount = 0;
     stop();
     let randPer = $('#randNum').val();
     if (randPer < 0) {

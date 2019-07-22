@@ -66,29 +66,21 @@ function frame() {
             count = 0;
 
             //top left
-            if (isCellLive(i - 1, j - 1))
-                count++;
+            if (isCellLive(i - 1, j - 1)) { count++; }
             //top
-            if (isCellLive(i - 1, j))
-                count++;
+            if (isCellLive(i - 1, j)) { count++; }
             //top right
-            if (isCellLive(i - 1, j + 1))
-                count++;
+            if (isCellLive(i - 1, j + 1)) { count++; }
             //right
-            if (isCellLive(i, j + 1))
-                count++;
+            if (isCellLive(i, j + 1)) { count++; }
             //bottom right
-            if (isCellLive(i + 1, j + 1))
-                count++;
+            if (isCellLive(i + 1, j + 1)) { count++; }
             //bottom
-            if (isCellLive(i + 1, j))
-                count++;
+            if (isCellLive(i + 1, j)) { count++; }
             //bottom left
-            if (isCellLive(i + 1, j - 1))
-                count++;
+            if (isCellLive(i + 1, j - 1)) { count++; }
             //left
-            if (isCellLive(i, j - 1))
-                count++;
+            if (isCellLive(i, j - 1)) { count++; }
 
 
             //check if cell is live or died
@@ -109,7 +101,7 @@ function frame() {
         //end of outer for
     }
 
-    let isChange = changeCells();
+    const isChange = changeCells();
 
     //checks if there is change, is so it will stop
     if (!isChange) {

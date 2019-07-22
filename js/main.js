@@ -2,6 +2,7 @@ let height, width;
 let myFp, liveCount,
     deadCount, genCount;
 let stopped = true;
+let stateArr;
 
 
 
@@ -15,11 +16,14 @@ function buildCells() {
     if (height && width) {
         $('table').empty();
         let tr;
+        let stateArr = [];
         for (let i = 0; i < height; i++) {
+            stateArr[i] = [];
             $('table').append(`<tr></tr>`);
             tr = $('tr').last();
             for (let j = 0; j < width; j++) {
                 tr.append(`<td id="td${i}-${j}" class='dead' onclick="tdClicked(this.id)"></td>`);
+                stateArr[i][j] = 0;
             }
         }
 
